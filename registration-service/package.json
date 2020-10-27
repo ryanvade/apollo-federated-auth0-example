@@ -1,0 +1,26 @@
+{
+  "name": "registration-service",
+  "version": "0.0.1",
+  "main": "dist/index.js",
+  "author": "Ryan Owens",
+  "license": "MIT",
+  "scripts": {
+    "start:dev": "nodemon 'src/index.ts' --exec 'ts-node' src/index.ts -e ts,graphql",
+    "build:prod": "tsc"
+  },
+  "dependencies": {
+    "@apollo/federation": "^0.20.4",
+    "apollo-server": "^2.18.2",
+    "graphql": "^15.3.0",
+    "graphql-middleware": "^4.0.2",
+    "uuid": "^8.3.1"
+  },
+  "devDependencies": {
+    "@types/graphql": "^14.5.0",
+    "@types/node": "^14.14.2",
+    "@types/uuid": "^8.3.0",
+    "nodemon": "^2.0.6",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.3"
+  }
+}
