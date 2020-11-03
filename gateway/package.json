@@ -5,7 +5,8 @@
   "author": "Ryan Owens",
   "license": "MIT",
   "scripts": {
-    "start:dev": "nodemon 'src/index.ts' --exec 'ts-node' src/index.ts -e ts,graphql"
+    "start:dev": "nodemon 'src/index.ts' --exec 'ts-node' src/index.ts -e ts,graphql",
+    "build:prod": "tsc"
   },
   "devDependencies": {
     "@types/express": "^4.17.8",

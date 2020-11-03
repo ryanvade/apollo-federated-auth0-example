@@ -6,8 +6,10 @@ const port = Number(process.env.PORT || "3000");
 
 const app = express();
 
+const serviceDiscoveryEndpoint = process.env.COPILOT_SERVICE_DISCOVERY_ENDPOINT;
+
 const gateway = new ApolloGateway({
-    serviceList: [{ name: "registration", url: "http://localhost:3001" }]
+    serviceList: [{ name: "registration", url: `http://registration.${serviceDiscoveryEndpoint}:3001` }]
 });
 
 const server = new ApolloServer({
@@ -18,5 +20,9 @@ const server = new ApolloServer({
 server.applyMiddleware({ app });
 
 app.listen({ port }, () => {
-    console.log(`Gateway ready at http://localhost:${port}${server.graphqlPath}`);
+    let location = "http://localhost";
+    if (process.env.COPILOT_LB_DNS) {
+        location = process.env.COPILOT_LB_DNS;
+    }
+    console.log(`Gateway ready at ${location}:${port}${server.graphqlPath}`);
 });

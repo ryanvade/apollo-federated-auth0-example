@@ -11,5 +11,9 @@ const server = new ApolloServer({
 });
 
 server.listen({ port }).then(({ url }) => {
-    console.log(`Registration service setup at ${url}`);
+    let location = url;
+    if (process.env.COPILOT_SERVICE_NAME) {
+        location = `${process.env.COPILOT_SERVICE_NAME}.${process.env.COPILOT_SERVICE_DISCOVERY_ENDPOINT}`;
+    }
+    console.log(`Registration service setup at ${location}`);
 });
